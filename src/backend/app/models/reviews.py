@@ -1,6 +1,9 @@
 from sqlalchemy import Column,Integer, ForeignKey, Text, Index
 from sqlalchemy.orm import relationship
 from database import BaseModel, init_db
+from agents import Agent
+from users import User
+
 
 class Review(BaseModel): # type: ignore
 

@@ -1,9 +1,9 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, func
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, func, Index
+from sqlalchemy.orm import relationship, declarative_base
 from database import BaseModel, init_db
 
 
-class Agent(BaseModel): # type: ignore
+class Agent(BaseModel):
 
     __tablename__ = "agents"
     name = Column(String(200),unique=True,nullable=False)
@@ -19,5 +19,6 @@ class Agent(BaseModel): # type: ignore
     reviews = relationship("Review", back_populates="agent", cascade="all, delete")
     ratings = relationship("Rating", back_populates="agent", cascade="all, delete")
 
+    __table_args__ = (Index("idx_agent_category_created_at", "category", "created_at"),)
 
 init_db()

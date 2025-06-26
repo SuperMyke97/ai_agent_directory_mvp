@@ -1,6 +1,9 @@
 from sqlalchemy import Column,Integer, ForeignKey, UniqueConstraint, CheckConstraint
 from sqlalchemy.orm import relationship
 from database import BaseModel, init_db
+from agents import Agent
+from users import User
+
 
 class Rating(BaseModel): # type: ignore
 
@@ -12,7 +15,7 @@ class Rating(BaseModel): # type: ignore
     user = relationship("User", back_populates="ratings")
     agent = relationship("Agent", back_populates="ratings")
 
-    __table_args__ = (UniqueConstraint("user_id", "agent_id", name="_user_agent_highlight_uc"),
+    __table_args__ = (UniqueConstraint("user_id", "agent_id", name="_user_agent_ratings_uc"),
                       CheckConstraint("value >= 1 AND value <=5", name="_check_rating_range"))
 
 

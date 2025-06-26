@@ -24,19 +24,21 @@ SessionLocal = sessionmaker(autoflush=True, bind=engine)
 
 Base = declarative_base()
 
+
+class BaseModel(Base):
+
+    __abstract__ = True
+    __allow_unmapped__ = True
+
+    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
+
+
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
-def BaseModel(Base):
-    
-    __abstract__ = True
-    __allow_unmapped__ = True
-
-    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
 
 
 def init_db():
