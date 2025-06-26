@@ -1,0 +1,43 @@
+[project]
+name = "ai-agent-directory-mvp"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "SuperMyke97",email = "96381792+SuperMyke97@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard] (>=0.115.13,<0.116.0)",
+    "uvicorn (>=0.34.3,<0.35.0)",
+    "sqlalchemy (>=2.0.41,<3.0.0)",
+    "psycopg2 (>=2.9.10,<3.0.0)",
+    "pandas (>=2.3.0,<3.0.0)",
+    "alembic (>=1.16.2,<2.0.0)",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "beautifulsoup4 (>=4.13.4,<5.0.0)",
+    "requests (>=2.32.4,<3.0.0)",
+    "selenium (>=4.33.0,<5.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "pathlib (>=1.0.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "ai_agent_directory_mvp", from = "src"}]
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.1"
+faker = "^37.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+flake8 = "^7.2.0"
+isort = "^6.0.1"
+mypy = "^1.16.1"
+pylint = "^3.3.7"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
