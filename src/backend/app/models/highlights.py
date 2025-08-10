@@ -1,8 +1,9 @@
 from sqlalchemy import Column,Integer, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
-from database import BaseModel, init_db
-from agents import Agent
-from users import User
+from backend.app.database import BaseModel, init_db
+from .agents import Agent 
+from .users import User 
+
 
 class Highlight(BaseModel): # type: ignore
 
