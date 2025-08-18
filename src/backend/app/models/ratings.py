@@ -1,6 +1,6 @@
 from sqlalchemy import Column,Integer, ForeignKey, UniqueConstraint, CheckConstraint
 from sqlalchemy.orm import relationship
-from database import BaseModel, init_db
+from backend.app.database import BaseModel, init_db
 from agents import Agent
 from users import User
 

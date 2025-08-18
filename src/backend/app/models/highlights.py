@@ -1,8 +1,7 @@
 from sqlalchemy import Column,Integer, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
-from database import BaseModel, init_db
-from agents import Agent
-from users import User
+from backend.app.database import BaseModel, init_db
+
 
 class Highlight(BaseModel): # type: ignore
 
@@ -14,6 +13,5 @@ class Highlight(BaseModel): # type: ignore
     agent = relationship("Agent", back_populates="highlights")
 
     __table_args__ = (UniqueConstraint("user_id", "agent_id", name="_user_agent_highlight_uc"),)
-
 
 init_db()

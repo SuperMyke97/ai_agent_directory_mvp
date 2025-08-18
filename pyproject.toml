@@ -13,13 +13,18 @@ dependencies = [
     "sqlalchemy (>=2.0.41,<3.0.0)",
     "psycopg2 (>=2.9.10,<3.0.0)",
     "pandas (>=2.3.0,<3.0.0)",
-    "alembic (>=1.16.2,<2.0.0)",
+    "alembic>=1.16.2,<2.0.0",
     "pydantic (>=2.11.7,<3.0.0)",
     "beautifulsoup4 (>=4.13.4,<5.0.0)",
     "requests (>=2.32.4,<3.0.0)",
     "selenium (>=4.33.0,<5.0.0)",
     "dotenv (>=0.9.9,<0.10.0)",
-    "pathlib (>=1.0.1,<2.0.0)"
+    "pathlib (>=1.0.1,<2.0.0)",
+    "polars>=1.32.0",
+    "pyjwt>=2.10.1",
+    "passlib[bcrypt]>=1.7.4",
+    "pendulum>=3.1.0",
+    "pytest>=8.4.1",
 ]
 
 [tool.poetry]
