@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 
-path = Path(".env")
-load_dotenv(dotenv_path=path)
 
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
 app = FastAPI(dependencies=[Depends(init_db)])
 app.include_router(users.router)
 
@@ -15,7 +15,7 @@ app.include_router(users.router)
 async def root():
     return {"message": "Hello AI Directory Application!"}
 
-print(os.getenv("DB_HOST"))
+
 
 # {
 #   "full_name": "Michael Ayodeji",

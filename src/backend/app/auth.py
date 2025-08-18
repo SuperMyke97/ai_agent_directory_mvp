@@ -8,13 +8,14 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 
 
-path = Path(".env")
-load_dotenv(dotenv_path=path)
+
+load_dotenv()
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
 
 if SECRET_KEY is None:
     raise ValueError("SECRET_KEY environment variable is not set. Please set it to a secure random string.")

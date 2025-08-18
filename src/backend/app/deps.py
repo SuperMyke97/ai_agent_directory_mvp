@@ -21,7 +21,7 @@ def authenticate_user(db: session_dep, username: str, password: str)-> User | No
     user = get_user(db, username)
     if not user:
         return False
-    if not verify_password(password, user.hashed_password):
+    if not verify_password(plain_password=password, hashed_password=user.hash_password):
         return False
     return user
 

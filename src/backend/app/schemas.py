@@ -6,7 +6,7 @@ class UserSchema(BaseModel):
     email: EmailStr
     password: str
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 class UserUpdateSchema(BaseModel):
@@ -16,7 +16,7 @@ class UserUpdateSchema(BaseModel):
     is_admin: bool | None = None
     
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 class Token(BaseModel):
@@ -27,5 +27,5 @@ class TokenData(BaseModel):
     username: str | None = None
     is_admin: bool | None = None
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
