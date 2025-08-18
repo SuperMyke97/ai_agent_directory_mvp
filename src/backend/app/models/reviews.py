@@ -17,5 +17,4 @@ class Review(BaseModel): # type: ignore
 
     __table_args__ = (Index("idx_reviews_user_agent","user_id", "agent_id"),)
 
-
 init_db()

@@ -8,13 +8,16 @@ from passlib.context import CryptContext
 from dotenv import load_dotenv
 
 
-path = Path("src/backend/.env")
+path = Path(".env")
 load_dotenv(dotenv_path=path)
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+if SECRET_KEY is None:
+    raise ValueError("SECRET_KEY environment variable is not set. Please set it to a secure random string.")
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -59,8 +62,10 @@ def create_access_token(data: dict, expires_delta: pendulum.Duration | None = No
        
         expire = now.add(minutes=15)
     # Update the expiration time in the token data
+    to_encode['iat'] = now.int_timestamp  # Add issued at time
     to_encode['exp'] = expire.int_timestamp  # pendulum uses int_timestamp for epoch
-    
+    to_encode['sub'] = data.get('sub', 'unknown')  # Ensure 'sub' is always present
+    to_encode['is_admin'] = data.get('is_admin', False)  # Ensure 'is_admin' is always present
     # Encode the token using the secret key and algorithm
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
